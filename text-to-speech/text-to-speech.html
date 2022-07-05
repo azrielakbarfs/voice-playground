@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <title>ExFrozze | Build with love ❤️</title>
+  <link rel="shortcut icon" href="img/logo.png" type="image/png">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/fakeLoader.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
+<body>
+
+  <div class="fakeLoader"></div>
+  <div class="wrapper">
+    <h3>Mengubah Teks ke Suara / Text To Speech</h3>
+    <p>Silahkan masukan teks ...</p>
+    <form action="#">
+      <div class="row">
+        <textarea></textarea>
+      </div>
+      <div class="row">
+        <label>Silahkan Pilih</label>
+        <div class="outer">
+          <select></select>
+        </div>
+      </div>
+      <button>Convert</button>
+      <br>
+      <br>
+      <hr>
+      <p><button onclick="location.href='../index.html' " type="button">Home</button> &nbsp;</span>
+        <button onclick="location.href='../talk-to-robot/talk-to-robot.html' " type="button">Talk To Robot</button> &nbsp;</span>
+      </p>
+    </form>
+  </div>
+
+  <script src="js/script.js"></script>
+
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="js/fakeLoader.js"></script>
+
+
+  <script>
+    $(document).ready(function () {
+      $.fakeLoader({
+        bgColor: '#A444B4',
+        spinner: "spinner4"
+      });
+    });
+  </script>
+</body>
+
+</html>

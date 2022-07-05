@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <title>ExFrozze | Build with love ❤️</title>
+  <link rel="shortcut icon" href="img/logo.png" type="image/png">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/fakeLoader.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
+<body>
+
+  <div class="fakeLoader"></div>
+
+  <div class="wrapper">
+    <h3>Mengubah Suara Ke Teks / Speech To Text</h3>
+    <p>Klik tombol untuk Mulai Berbicara ...</p>
+
+    <br>
+
+    <input type="text" class="input-field">
+    <div class="content-box">
+
+      <script>
+        navigator.mediaDevices.getUserMedia({
+            audio: true
+          })
+          .then(function (stream) {
+            console.log('You let me use your mic!')
+          })
+          .catch(function (err) {
+            console.log('No mic for you!')
+          });
+      </script>
+
+      <div id="soal"></div>
+      <div id="output" class="hide"></div>
+      <script>
+        /* JS comes here */
+        var a = 1;
+
+        function runSpeechRecognition() {
+          // get output div reference
+          var output = document.getElementById("output");
+          // get action element reference
+          var action = document.getElementById("action");
+          // new speech recognition object
+
+
+          var SpeechRecognition = SpeechRecognition || webkitSpeechRecognition;
+          var recognition = new SpeechRecognition();
+
+          // This runs when the speech recognition service starts
+          recognition.onstart = function () {
+
+            action.innerHTML = "<small>Silakan berbicara...</small>";
+          };
+
+          recognition.onspeechend = function () {
+            action.innerHTML = "<small>Selesai...</small>";
+            recognition.stop();
+
+          }
+
+          // This runs when the speech recognition service returns result
+          recognition.onresult = function (event) {
+            var transcript = event.results[0][0].transcript;
+            output.innerHTML = transcript;
+            a = a + 1;
+            output.classList.remove("hide");
+          };
+
+          // start recognition
+          recognition.lang = 'id-ID';
+          recognition.start();
+        }
+      </script>
+    </div>
+
+    <br>
+
+    <div class="content">
+      <ul class="result-details">
+        <p><button type="button" onclick="runSpeechRecognition()">Klik</button> &nbsp; <span id="action"></span></p>
+        <br>
+        <hr>
+        <br>
+        <p><button onclick="location.href='../index.html' " type="button">Home</button> &nbsp;</span>
+          <button onclick="location.href='../text-to-speech/text-to-speech.html' " type="button">Text to Speech</button> &nbsp;</span>
+        </p>
+      </ul>
+    </div>
+  </div>
+
+  <script src="js/script.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="js/fakeLoader.js"></script>
+
+
+  <script>
+    $(document).ready(function () {
+      $.fakeLoader({
+        bgColor: '#BC44AC',
+        spinner: "spinner4"
+      });
+    });
+  </script>
+
+</body>
+
+</html>

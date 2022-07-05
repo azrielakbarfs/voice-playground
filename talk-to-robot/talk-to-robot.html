@@ -1,0 +1,283 @@
+<!doctype html>
+
+<head>
+
+
+  <meta charset="utf-8">
+  <title>ExFrozze | Build with love ❤️</title>
+  <link rel="shortcut icon" href="logo.png" type="image/png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+
+  <style>
+    * {
+      padding: 0;
+      margin: 0;
+      box-sizing: border-box;
+      font-size: 15px;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    body {
+      display: flex;
+      padding: 0 10px;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      background: -webkit-linear-gradient(left, #a445b2, #fa4299);
+    }
+
+    ::selection {
+      color: #fff;
+      background: #fa4299;
+    }
+
+    .wrapper {
+      width: 770px;
+      padding: 35px;
+      border-radius: 10px;
+      box-shadow: 0 10px 15px rgba(0, 0, 0, 0.6);
+    }
+
+    .wrapper .content-box {
+      padding: 20px 20px 20px;
+      border-radius: 10px;
+      background-color: #FFFFFF;
+    }
+
+    section {
+      width: 100%;
+      display: flex;
+      align-items: flex-start;
+      background-color: #FFFFFF;
+      flex-direction: column;
+      padding: 50px 0;
+    }
+
+    section h2 {
+      color: rgb(0, 0, 0);
+      text-align: center;
+      width: 100%;
+      font-size: 30px;
+    }
+
+    section p {
+      text-align: center;
+      color: rgb(0, 0, 0);
+      width: 100%;
+      margin-bottom: 40px;
+    }
+
+    body {
+      font-family: arial;
+    }
+
+    button {
+      width: 155px;
+      padding: 8px;
+      font-size: 16px;
+      justify-content: center;
+      background-color: #fa4299;
+      color: #ffffff;
+      border: none;
+      cursor: pointer;
+      border-radius: 5px;
+    }
+
+    .container {
+      width: 90%;
+      max-width: 500px;
+      margin: 0 auto;
+      justify-content: center;
+    }
+
+    .texts p {
+      color: #FFFFFF;
+      text-align: center;
+      width: 100%;
+      background-color: #fa4299;
+      padding: 10px;
+      border-radius: 8px;
+      margin-bottom: 10px;
+    }
+
+    .texts p.replay {
+      text-align: center;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="fakeLoader"></div>
+  <div class="wrapper">
+    <div class="content-box">
+      <script>
+        navigator.mediaDevices.getUserMedia({
+            audio: true
+          })
+          .then(function (stream) {
+            console.log('You let me use your mic!')
+          })
+          .catch(function (err) {
+            console.log('No mic for you!')
+          });
+      </script>
+      <section>
+        <h2>Talk to Robot</h2>
+        <p>Click the button to Start Talking</p>
+        <p><b>[ Example ]</b></p>
+        <p>
+          1. Hei | 2. Bagaimana kabar kamu? | 3. Buka Instagram <br>
+          | 4. Buka situs Kampus | 5. Buka halaman awal
+        </p>
+        <div id="soal"></div>
+        <p>
+          <button onclick="location.href='../index.html' " type="button">Home</button> &nbsp;</span>
+          <button type="button" onclick="runSpeechRecognition()">Klik</button> &nbsp; <span id="action"></span>
+        </p>
+        <hr>
+        <div class="container">
+          <div class="texts">
+          </div>
+        </div>
+      </section>
+
+      <script>
+        /* JS comes here */
+        const texts = document.querySelector('.texts');
+        var a = 1;
+
+
+        function runSpeechRecognition() {
+          // get output div reference
+          var output = document.getElementById("output");
+          // get action element reference
+          var action = document.getElementById("action");
+          // new speech recognition object
+
+
+          var SpeechRecognition = SpeechRecognition || webkitSpeechRecognition;
+          var recognition = new SpeechRecognition();
+          recognition.interimResults = true;
+
+
+          // This runs when the speech recognition service starts
+          recognition.onstart = function () {
+
+            action.innerHTML = "<small>Silakan berbicara...</small>";
+          };
+
+          recognition.onspeechend = function () {
+            action.innerHTML = "<small>Selesai...</small>";
+            recognition.stop();
+
+          }
+          // This runs when the speech recognition service returns result
+          let p = document.createElement("p");
+          let msg = new SpeechSynthesisUtterance();
+          var voices = window.speechSynthesis.getVoices();
+          msg.voice = voices[0];
+          msg.volume = 1; // 0.1 sampai 1
+          msg.rate = 1; // 0.1 sampai 10
+          msg.pitch = 1; // 0 sampai 2
+
+          recognition.addEventListener("result", (e) => {
+            const text = Array.from(e.results)
+              .map((result) => result[0])
+              .map((result) => result.transcript)
+              .join("");
+
+            p.innerText = text;
+            texts.appendChild(p);
+
+            if (e.results[0].isFinal) {
+              if (text.includes("hei")) {
+                p = document.createElement("p");
+                p.classList.add("replay");
+                p.innerText = "Halo Azriel, Selamat datang di Taman Bermain Suara! Senang bisa mengenalmu.";
+                msg.text = "Halo Azriel, Selamat datang di Taman Bermain Suara! Senang bisa mengenalmu.";
+                window.speechSynthesis.speak(msg);
+                texts.appendChild(p);
+
+              }
+              if (text.includes("Bagaimana kabar kamu")) {
+                p = document.createElement("p");
+                p.classList.add("replay");
+                p.innerText = "Ya, Kabarku baik baik saja. Lalu bagaimana kabar kamu?";
+                msg.text = "Ya, Kabarku baik baik saja. Lalu bagaimana kabar kamu?";
+                window.speechSynthesis.speak(msg);
+                texts.appendChild(p);
+              }
+
+              //REPLY DIRI SENDIRI//
+              if (text.includes("kabarku juga baik")) {
+                p = document.createElement("p");
+                p.classList.add("replay");
+                p.innerText = "Sangat senang mendengar bahwa kabarmu juga baik";
+                msg.text = "Sangat senang mendengar bahwa kabarmu juga baik";
+                window.speechSynthesis.speak(msg);
+                texts.appendChild(p);
+              }
+              //REPLY DIRI SENDIRI//
+              if (text.includes("Buka Instagram")) {
+                p = document.createElement("p");
+                p.classList.add("replay");
+                p.innerText = "Sedang membuka Instagram anda";
+                msg.text = "Sedang membuka Instagram anda";
+                window.open("https://www.instagram.com/azrielakbarfs");
+                window.speechSynthesis.speak(msg);
+                texts.appendChild(p);
+              }
+              if (text.includes("Buka situs kampus")) {
+                p = document.createElement("p");
+                p.classList.add("replay");
+                p.innerText = "Sedang membuka Situs Website Universitas Nusantara PGRI Kediri";
+                msg.text = "Sedang membuka Situs Website Universitas Nusantara PGRI Kediri";
+                window.open("https://unpkediri.ac.id/");
+                window.speechSynthesis.speak(msg);
+                texts.appendChild(p);
+              }
+              if (text.includes("buka halaman awal")) {
+                p = document.createElement("p");
+                p.classList.add("replay");
+                p.innerText = "Sedang membuka halaman awal website";
+                msg.text = "Sedang membuka halaman awal website";
+                window.open("../index.html");
+                window.speechSynthesis.speak(msg);
+                texts.appendChild(p);
+              }
+              p = document.createElement("p");
+            }
+            console.log(e);
+          });
+
+          recognition.addEventListener("end", () => {
+            recognition.start();
+          });
+
+          // start recognition
+          recognition.lang = 'id-ID';
+          recognition.start();
+        }
+      </script>
+    </div>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="fakeLoader.js"></script>
+  <link rel="stylesheet" href="fakeLoader.css">
+  <script src='responsivevoice.js'></script>
+
+  <script>
+    $(document).ready(function () {
+      $.fakeLoader({
+        bgColor: '#FA4299',
+        spinner: "spinner4"
+      });
+    });
+    </script>
+
+</body>
+
+</html>
