@@ -1,5 +1,5 @@
 # voice-playground
-Hello guys! 👋
+Hello guys! 👋 <br>
 This is a Voice playground, so happy if you contribute with us 😀 <br>
 Don't forget to include all authors, this script is opensource 👌🏽 <br>
 This is the final project of Web Programming
