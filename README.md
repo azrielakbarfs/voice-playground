@@ -10,6 +10,7 @@ This is the final project of Web Programming
 - Ahmad Fathkur Rozi ( https://github.com/PrideRz )
 - Coding Nepal ( https://www.codingnepalweb.com/ )
 - Fakeloader ( https://github.com/joaopereirawd/fakeLoader.js )
+- Shaif Arfan ( https://github.com/ShaifArfan )
 
 <hr>
 
@@ -24,7 +25,7 @@ This is the final project of Web Programming
 All documentation: <br>
 1. Speech to Text:  Have Mr. Ardi Sanjaya S.Kom, M.Kom. <br>
 2. Text to Speech: https://www.codingnepalweb.com/text-to-speech-converter-html-javascript/ <br>
-3. Talk to Robot: https://github.com/MohammadAqilMuhaimin/speech-to-text/tree/master/day-24
+3. Talk to Robot: https://github.com/ShaifArfan/30days30submits/tree/master/day-24
 
 <hr>
 Donate: <br>
