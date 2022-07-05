@@ -30,10 +30,13 @@ Donate: <br>
 <h3>Homepage</h3>
 
 ![homepage](https://user-images.githubusercontent.com/39859740/177284834-0eb39a36-9057-48f8-a40d-22e21f0b026d.jpg)
+
 <h3>Speech To Text</h3>
 ![ss2](https://user-images.githubusercontent.com/39859740/177286375-b8c54a05-93b6-4c6b-8939-5d720ec8e7f8.jpg)
+
 <h3>Text To Speech</h3>
 ![ss3](https://user-images.githubusercontent.com/39859740/177286899-b43910e3-3ed8-4886-8bad-5e20052c976f.jpg)
+
 <h3>Talk To Robot</h3>
 ![ss4](https://user-images.githubusercontent.com/39859740/177287159-ec6755e8-8f2e-46b8-b6c5-f859b24ed70f.jpg)
 
